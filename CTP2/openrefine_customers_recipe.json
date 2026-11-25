@@ -1,0 +1,963 @@
+[
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "number",
+          "column": "customer_id",
+          "blankPosition": -1,
+          "errorPosition": 1,
+          "reverse": false
+        }
+      ]
+    },
+    "description": "Reorder rows"
+  },
+  {
+    "op": "core/blank-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "customer_id",
+    "description": "Blank down cells in column customer_id"
+  },
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "number",
+          "column": "customer_id",
+          "blankPosition": -1,
+          "errorPosition": 1,
+          "reverse": false
+        }
+      ]
+    },
+    "description": "Reorder rows"
+  },
+  {
+    "op": "core/blank-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "customer_id",
+    "description": "Blank down cells in column customer_id"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "first_name",
+    "expression": "grel:value.trim().replace(/\\s+/, ' ').toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column first_name using expression grel:value.trim().replace(/\\s+/, ' ').toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "last_name",
+    "expression": "grel:value.trim().replace(/\\s+/, ' ').toTitlecase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column last_name using expression grel:value.trim().replace(/\\s+/, ' ').toTitlecase()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "email",
+    "expression": "grel:value.trim().toLowercase()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column email using expression grel:value.trim().toLowercase()"
+  },
+  {
+    "op": "core/blank-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "customer_id",
+    "description": "Blank down cells in column customer_id"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "FR",
+          "fr"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "FR"
+      },
+      {
+        "from": [
+          "ES",
+          "es"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ES"
+      },
+      {
+        "from": [
+          "France",
+          "france "
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "FR"
+      }
+    ],
+    "description": "Mass edit cells in column country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "FR",
+          "FRA"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "FR"
+      },
+      {
+        "from": [
+          "DE",
+          "DEU"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "DE"
+      }
+    ],
+    "description": "Mass edit cells in column country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Belgium",
+          "Belgique"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "BE"
+      }
+    ],
+    "description": "Mass edit cells in column country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "country",
+          "expression": "value",
+          "columnName": "country",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "BEL",
+                "l": "BEL"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "BEL"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "BE"
+      }
+    ],
+    "description": "Mass edit cells in column country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "country",
+          "expression": "value",
+          "columnName": "country",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Espagne",
+                "l": "Espagne"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Espagne"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ES"
+      }
+    ],
+    "description": "Mass edit cells in column country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "country",
+          "expression": "value",
+          "columnName": "country",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Allemagne",
+                "l": "Allemagne"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Allemagne"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "DE"
+      }
+    ],
+    "description": "Mass edit cells in column country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "country",
+          "expression": "value",
+          "columnName": "country",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Germany",
+                "l": "Germany"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Germany"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "DE"
+      }
+    ],
+    "description": "Mass edit cells in column country"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "country",
+          "expression": "value",
+          "columnName": "country",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Spain",
+                "l": "Spain"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "country",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Spain"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "ES"
+      }
+    ],
+    "description": "Mass edit cells in column country"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "country",
+          "expression": "value",
+          "columnName": "country",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "signup_date",
+    "expression": "grel:if(\n  isNotNull(value.match(/\\d{2}\\/\\d{2}\\/\\d{4}/)),\n  with(value.split('/'), p, p[2]+'-'+p[1]+'-'+p[0]),\n  if(\n    isNotNull(value.match(/\\d{2}-\\d{2}-\\d{4}/)),\n    with(value.split('-'), p, p[2]+'-'+p[0]+'-'+p[1]),\n    if(\n      isNotNull(value.match(/\\d{4}\\/\\d{2}\\/\\d{2}/)),\n      value.replace('/', '-'),\n      value\n    )\n  )\n)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column signup_date using expression grel:if(\n  isNotNull(value.match(/\\d{2}\\/\\d{2}\\/\\d{4}/)),\n  with(value.split('/'), p, p[2]+'-'+p[1]+'-'+p[0]),\n  if(\n    isNotNull(value.match(/\\d{2}-\\d{2}-\\d{4}/)),\n    with(value.split('-'), p, p[2]+'-'+p[0]+'-'+p[1]),\n    if(\n      isNotNull(value.match(/\\d{4}\\/\\d{2}\\/\\d{2}/)),\n      value.replace('/', '-'),\n      value\n    )\n  )\n)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "country",
+          "expression": "value",
+          "columnName": "country",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "birth_date",
+    "expression": "grel:if(\n  isNotNull(value.match(/\\d{2}\\/\\d{2}\\/\\d{4}/)),\n  with(value.split('/'), p, p[2]+'-'+p[1]+'-'+p[0]),\n  if(\n    isNotNull(value.match(/\\d{2}-\\d{2}-\\d{4}/)),\n    with(value.split('-'), p, p[2]+'-'+p[0]+'-'+p[1]),\n    if(\n      isNotNull(value.match(/\\d{4}\\/\\d{2}\\/\\d{2}/)),\n      value.replace('/', '-'),\n      value\n    )\n  )\n)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column birth_date using expression grel:if(\n  isNotNull(value.match(/\\d{2}\\/\\d{2}\\/\\d{4}/)),\n  with(value.split('/'), p, p[2]+'-'+p[1]+'-'+p[0]),\n  if(\n    isNotNull(value.match(/\\d{2}-\\d{2}-\\d{4}/)),\n    with(value.split('-'), p, p[2]+'-'+p[0]+'-'+p[1]),\n    if(\n      isNotNull(value.match(/\\d{4}\\/\\d{2}\\/\\d{2}/)),\n      value.replace('/', '-'),\n      value\n    )\n  )\n)"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "loyalty_tier",
+          "expression": "value",
+          "columnName": "loyalty_tier",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "GOLD",
+                "l": "GOLD"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loyalty_tier",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "GOLD"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "gold"
+      }
+    ],
+    "description": "Mass edit cells in column loyalty_tier"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "loyalty_tier",
+          "expression": "value",
+          "columnName": "loyalty_tier",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Platinium",
+                "l": "Platinium"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loyalty_tier",
+    "expression": "grel:value.trim().toLowercase().replace('platinium', 'platinum')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column loyalty_tier using expression grel:value.trim().toLowercase().replace('platinium', 'platinum')"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "loyalty_tier",
+          "expression": "value",
+          "columnName": "loyalty_tier",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "silver ",
+                "l": "silver "
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loyalty_tier",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "silver "
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "silver"
+      }
+    ],
+    "description": "Mass edit cells in column loyalty_tier"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "loyalty_tier",
+          "expression": "value",
+          "columnName": "loyalty_tier",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Gold",
+                "l": "Gold"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "loyalty_tier",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Gold"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "gold"
+      }
+    ],
+    "description": "Mass edit cells in column loyalty_tier"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "postal_code",
+    "expression": "grel:if(\n  and(cells['country'].value == 'FR', value.length() == 4),\n  '0' + value,\n  value\n)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column postal_code using expression grel:if(\n  and(cells['country'].value == 'FR', value.length() == 4),\n  '0' + value,\n  value\n)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "phone",
+    "expression": "grel:with(\n  value.replace(/[^0-9+]/, ''),\n  v,\n  if(\n    v.startsWith('0033'),\n    '+33' + v.substring(4),\n    if(\n      and(v.startsWith('0'), v.length() == 10),\n      '+33' + v.substring(1),\n      v\n    )\n  )\n)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column phone using expression grel:with(\n  value.replace(/[^0-9+]/, ''),\n  v,\n  if(\n    v.startsWith('0033'),\n    '+33' + v.substring(4),\n    if(\n      and(v.startsWith('0'), v.length() == 10),\n      '+33' + v.substring(1),\n      v\n    )\n  )\n)"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "customer_id",
+          "expression": "isBlank(value)",
+          "columnName": "customer_id",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "email",
+    "expression": "grel:facetCount(value, 'value', 'email') > 1",
+    "onError": "set-to-blank",
+    "newColumnName": "is_email_duplicate",
+    "columnInsertIndex": 4,
+    "description": "Create column is_email_duplicate at index 4 based on column email using expression grel:facetCount(value, 'value', 'email') > 1"
+  }
+]

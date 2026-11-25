@@ -1,0 +1,12 @@
+dimension,rule_in_plain_words,column,how_you_measured_it,failing_rows,total_rows,score_pct,severity_high_medium_low,who_should_fix_owner_steward_custodian
+Completeness,email is filled,email,number of empty values,48,1241,96.13,medium,Customer data steward (to assign)
+Completeness,country is filled,country,number of empty values,37,1241,97.02,medium,Customer data steward (to assign)
+Uniqueness,customer_id is unique,customer_id,number of rows with duplicated customer_id,16,1241,98.71,high,Customer data steward (to assign)
+Uniqueness,normalized email is unique,email,duplicated email rows before deduplication,112,1241,90.98,medium,Customer data steward (to assign)
+Validity,email follows the standard email format,email,invalid email rows after email deduplication,20,1134,98.24,medium,Customer data steward (to assign)
+Validity,loyalty_tier is bronze silver gold or platinum,loyalty_tier,values outside the allowed set after email deduplication,12,1134,98.94,low,Customer data steward (to assign)
+Validity,French postal code has five digits,postal_code,invalid postal codes among country equals France rows,4,61,93.44,medium,Customer data steward (to assign)
+Consistency,country uses the canonical uppercase ISO alpha-2 code,country,non-empty values outside FR DE BE ES from the listed country counts,274,1099,75.07,medium,Customer data steward (to assign)
+Consistency,signup_date uses YYYY-MM-DD format,signup_date,wrong-format rows after email deduplication,284,1134,74.96,medium,Customer data steward (to assign)
+Accuracy,birth_date is not before 1906 or in the future,birth_date,invalid birth dates after email deduplication,10,1134,99.12,medium,Customer data steward (to assign)
+Timeliness,,,,,,,,
