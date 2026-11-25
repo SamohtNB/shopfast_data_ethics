@@ -1,0 +1,1 @@
+A governance control was missing at ingestion to ensure payment amounts used a consistent unit (euros, not cents) and decimal format across batches.

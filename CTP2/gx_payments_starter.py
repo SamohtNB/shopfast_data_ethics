@@ -6,7 +6,7 @@ import pandas as pd
 import great_expectations as gx
 
 KIT = "../shopfast-kit/data/"
-files = {"payments (history)": KIT + "payments.csv", "payments_batch_2 (new)": "payments_batch_2.csv"}
+files = {"payments (history)": KIT + "payments.csv", "payments_batch_2 (new)": KIT + "payments_batch_2.csv"}
 
 context = gx.get_context(mode="file")
 source = context.data_sources.add_or_update_pandas("shopfast_payments")
@@ -20,6 +20,8 @@ naive = [E.ExpectColumnValuesToNotBeNull(column="payment_id"), E.ExpectColumnVal
 smart = naive + [
     # TODO: add 2 to 4 expectations that would have caught the cents incident.
     # Ideas: a range on each amount, a range on the mean or median, a regex on the text value (column "amount_txt").
+    E.ExpectColumnValuesToBeBetween(column="amount", min_value=0, max_value=1500, strict_min=True),
+    E.ExpectColumnValuesToMatchRegex(column="amount_txt", regex=r"^\d{1,4}\.\d{1,2}$")
 ]
 
 def run(name, expectations, df):

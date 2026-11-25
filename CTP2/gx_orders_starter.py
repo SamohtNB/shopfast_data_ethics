@@ -43,7 +43,7 @@ for e in [
     E.ExpectColumnValuesToBeInSet(column="shipping_country", value_set={"FR", "DE", "BE", "ES"}),
 
     # TODO 7: total_amount_eur strictly positive and below a sensible maximum
-    E.ExpectColumnValuesToBeBetween(column="total_amount_eur", min_value=0, max_value=10000, strict_min=True),
+    E.ExpectColumnValuesToBeBetween(column="total_amount_eur", min_value=0, max_value=1000, strict_min=True),
 
 ]:
     suite.add_expectation(e)
