@@ -16,9 +16,9 @@ models:
         description: "{{ doc('net_revenue') }}"
       # TODO: document the other columns
       - name: gross_revenue_eur
-        description: "TODO"
+        description: "gross revenue in EUR, before any refunds or discounts."
       - name: refunded_revenue_eur
-        description: "TODO"
+        description: "refunded revenue in EUR, for any refunded orders."
         tags: ['pii']
         meta: {classification: confidential}
 
@@ -34,22 +34,22 @@ models:
       tags: ['pii']
     columns:
       - name: customer_id
-        description: "TODO"
+        description: "customer id, unique per customer"
         data_tests: [unique, not_null]
         tags: ['pii']
         meta: {classification: confidential}
       - name: first_name
-        description: "TODO"
+        description: "first name of the customer"
         data_tests: [not_null]
         tags: ['pii']
         meta: {classification: confidential}
       - name: last_name
-        description: "TODO"
+        description: "last name of the customer"
         data_tests: [not_null]
         tags: ['pii']
         meta: {classification: confidential}
       - name: email
-        description: "TODO"
+        description: "email address of the customer"
         data_tests:
           - not_null:
               config:
@@ -57,7 +57,7 @@ models:
         tags: ['pii']
         meta: {classification: confidential}
       - name: country_code
-        description: "TODO"
+        description: "ISO 3166-1 alpha-2 country code of the customer"
         data_tests:
           - not_null:
               config:
