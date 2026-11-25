@@ -1,0 +1,152 @@
+version: 2
+
+# CTP 3 - Exercise 1: document and govern the staging models.
+# For each model: description, meta (owner, steward, domain, tier); for each column: description,
+# and for personal data: tags: ['pii'] + meta: {classification: confidential|restricted}.
+
+models:
+  - name: stg_customers
+    description: "One row per customer account, cleaned from raw.customers (exact duplicate rows removed, ISO country codes, ISO dates)."
+    meta:
+      owner: "Sara Martin (Head of Sales)"
+      steward: "Karim Benali (Analytics Engineer)"
+      domain: customer
+      tier: gold
+    config:
+      tags: ['pii']
+    columns:
+      - name: customer_id
+        description: "Technical identifier of the customer account. One person may have several accounts (see duplicates)."
+        data_tests: [unique, not_null]
+      - name: email
+        description: "Login email, trimmed and lower-cased."
+        tags: ['pii']
+        meta: {classification: confidential}
+      # TODO: document first_name, last_name, phone, birth_date, city, country_code, signup_date,
+      #       has_marketing_consent, loyalty_tier  (description + pii tag/classification where needed)
+      - name: birth_date
+        description: "Date of birth of the customer."
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: first_name
+        description: "First name of the customer."
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: last_name
+        description: "Last name of the customer."
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: phone
+        description: "Phone number of the customer."
+        tags: ['pii']
+        meta: {classification: confidential}
+        
+      - name: country_code
+        description: "ISO 3166-1 alpha-2 country code of the customer."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [FR, DE, ES, BE]
+      - name: loyalty_tier
+        description: "Loyalty program tier of the customer."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [bronze, silver, gold, platinum]
+
+  - name: stg_orders
+    description: "One row per order, cleaned from raw.orders (exact duplicate rows removed, ISO country codes, ISO dates)."
+    # TODO: meta owner / steward / domain / tier
+    meta:
+      owner: "Head of Sales"
+      steward: "Analytics engineer"
+      domain: order
+      tier: gold
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+        description: "Technical identifier of the order."
+      - name: customer_id
+        description: "Technical identifier of the customer who placed the order."
+        data_tests: [not_null]
+      - name: order_date
+        description: "Date when the order was placed."
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: channel
+        description: "Sales channel through which the order was placed."
+        data_tests: [not_null]
+      - name: shipping_country
+        description: "ISO 3166-1 alpha-2 country code of the shipping address."
+        data_tests: [not_null]
+      - name: total_amount_eur
+        description: "Total amount of the order in euros."
+        data_tests: [not_null]
+        meta: {unit: euros}
+      - name: status
+        description: "Current status of the order."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [pending, delivered, cancelled, shipped, returned]
+
+  - name: stg_order_items
+    description: "One row per product line of an order."
+    meta:
+      owner: "Head of Sales"
+      steward: "Analytics engineer"
+      domain: order
+      tier: gold
+    columns:
+      - name: order_id
+        description: "Technical identifier of the order."
+        data_tests: [not_null]
+      - name: product_id
+        description: "Technical identifier of the product."
+        data_tests: [not_null]
+      - name: quantity
+        description: "Quantity of the product in the order."
+        data_tests: [not_null]
+      - name: unit_price_eur
+        description: "Unit price of the product in the order, in euros."
+        data_tests: [not_null]
+
+  - name: stg_payments
+    description: "One row per payment event from the payment provider (captured or refunded)."
+    meta:
+      owner: "CFO / Head of Finance"
+      steward: "Finance data steward"
+      domain: payment
+      tier: gold
+    # TODO: what is the UNIT of amount? Document it - this is the cents incident!
+    columns:
+      - name: amount
+        description: "Amount of the payment event in euros."
+        data_tests: [not_null]
+        meta: {unit: euros}
+  - name: stg_products
+    description: "Product catalogue with list prices."
+    meta:
+      owner: "Head of Merchandising"
+      steward: "Product data steward"
+      domain: product
+      tier: gold
+    columns:
+      - name: product_id
+        description: "Technical identifier of the product."
+        data_tests: [unique, not_null]
+      - name: product_name
+        description: "Name of the product."
+        data_tests: [not_null]
+      - name: category
+        description: "Category of the product."
+        data_tests: [not_null]
+      - name: list_price_eur
+        description: "List price of the product in euros."
+        data_tests:
+          - not_null:
+              config:
+                severity: warn

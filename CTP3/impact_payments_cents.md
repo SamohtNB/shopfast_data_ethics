@@ -1,0 +1,5 @@
+- Impact: if `amount` is in cents, `fct_orders` treats refunds as euros, overstating refunds 100x and understating net revenue.
+- Warn: CFO/Head of Finance, Finance data steward, Data platform engineer, and downstream Finance Report and Sales Dashboard owners.
+- Test: verify a cents-to-EUR conversion (`12345` -> `123.45`) and reconcile captured/refunded totals with the provider by currency.
+- Approval: CFO/Head of Finance must confirm the provider's unit and approve the conversion before merge.
+- Result: the inventory still says `EUR?`; unit is unconfirmed, so do not deploy a conversion until Finance verifies it.

@@ -1,0 +1,40 @@
+model,column,description,pii,classification,model_owner,domain,tier
+stg_order_items,order_id,Technical identifier of the order.,False,,Head of Sales,order,gold
+stg_order_items,product_id,Technical identifier of the product.,False,,Head of Sales,order,gold
+stg_order_items,quantity,Quantity of the product in the order.,False,,Head of Sales,order,gold
+stg_order_items,unit_price_eur,"Unit price of the product in the order, in euros.",False,,Head of Sales,order,gold
+stg_payments,amount,Amount of the payment event in euros.,False,,CFO / Head of Finance,payment,gold
+stg_customers,customer_id,Technical identifier of the customer account. One person may have several accounts (see duplicates).,False,,Sara Martin (Head of Sales),customer,gold
+stg_customers,email,"Login email, trimmed and lower-cased.",True,confidential,Sara Martin (Head of Sales),customer,gold
+stg_customers,birth_date,Date of birth of the customer.,True,confidential,Sara Martin (Head of Sales),customer,gold
+stg_customers,first_name,First name of the customer.,True,confidential,Sara Martin (Head of Sales),customer,gold
+stg_customers,last_name,Last name of the customer.,True,confidential,Sara Martin (Head of Sales),customer,gold
+stg_customers,phone,Phone number of the customer.,True,confidential,Sara Martin (Head of Sales),customer,gold
+stg_customers,country_code,ISO 3166-1 alpha-2 country code of the customer.,False,,Sara Martin (Head of Sales),customer,gold
+stg_customers,loyalty_tier,Loyalty program tier of the customer.,False,,Sara Martin (Head of Sales),customer,gold
+stg_products,product_id,Technical identifier of the product.,False,,Head of Merchandising,product,gold
+stg_products,product_name,Name of the product.,False,,Head of Merchandising,product,gold
+stg_products,category,Category of the product.,False,,Head of Merchandising,product,gold
+stg_products,list_price_eur,List price of the product in euros.,False,,Head of Merchandising,product,gold
+stg_orders,order_id,Technical identifier of the order.,False,,Head of Sales,order,gold
+stg_orders,customer_id,Technical identifier of the customer who placed the order.,False,,Head of Sales,order,gold
+stg_orders,order_date,Date when the order was placed.,False,,Head of Sales,order,gold
+stg_orders,channel,Sales channel through which the order was placed.,False,,Head of Sales,order,gold
+stg_orders,shipping_country,ISO 3166-1 alpha-2 country code of the shipping address.,False,,Head of Sales,order,gold
+stg_orders,total_amount_eur,Total amount of the order in euros.,False,,Head of Sales,order,gold
+stg_orders,status,Current status of the order.,False,,Head of Sales,order,gold
+dim_customers,customer_id,TODO,True,confidential,Sara Martin (Head of Sales),sales,gold
+dim_customers,first_name,TODO,True,confidential,Sara Martin (Head of Sales),sales,gold
+dim_customers,last_name,TODO,True,confidential,Sara Martin (Head of Sales),sales,gold
+dim_customers,email,TODO,True,confidential,Sara Martin (Head of Sales),sales,gold
+dim_customers,country_code,TODO,True,confidential,Sara Martin (Head of Sales),sales,gold
+fct_orders,order_id,,False,,Sara Martin (Head of Sales),sales,gold
+fct_orders,net_revenue_eur,"**Net revenue (EUR)** — revenue after refunds, excluding VAT and retaining shipping fees.
+
+Formula: `(gross_revenue_eur - refunded_eur) / 1.20` when both inputs are EUR and the applicable VAT rate is 20%; otherwise remove the applicable VAT rate after refunds. Example: `(EUR 120 gross - EUR 12 refunded) / 1.20 = EUR 90` net revenue.
+
+Owner: CFO / Head of Finance · Steward: Finance data steward · Status: approved in role-play simulation (2026-11-25; payment-unit confirmation and real approval required before production).
+
+The Sales memo's VAT-inclusive net figure is not the company net-revenue definition; Sales can report VAT-inclusive gross sales separately. Confirm whether the provider's payment amount is EUR or cents before applying the formula.",False,,Sara Martin (Head of Sales),sales,gold
+fct_orders,gross_revenue_eur,TODO,False,,Sara Martin (Head of Sales),sales,gold
+fct_orders,refunded_revenue_eur,TODO,True,confidential,Sara Martin (Head of Sales),sales,gold

@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "One row per order with gross, refunded and net revenue. Source of the Sales dashboard and the Finance report."
+    meta:
+      owner: "Sara Martin (Head of Sales)"
+      domain: sales
+      tier: gold
+    config:
+      tags: ['pii']
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: net_revenue_eur
+        description: "{{ doc('net_revenue') }}"
+      # TODO: document the other columns
+      - name: gross_revenue_eur
+        description: "TODO"
+      - name: refunded_revenue_eur
+        description: "TODO"
+        tags: ['pii']
+        meta: {classification: confidential}
+
+  - name: dim_customers
+    description: "dimension table with one row per customer, including personal information and loyalty program data."
+    # TODO: meta owner / steward / domain / tier, column docs, PII tags
+    meta:
+      owner: "Sara Martin (Head of Sales)"
+      steward: "Analytics engineer"
+      domain: sales
+      tier: gold
+    config:
+      tags: ['pii']
+    columns:
+      - name: customer_id
+        description: "TODO"
+        data_tests: [unique, not_null]
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: first_name
+        description: "TODO"
+        data_tests: [not_null]
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: last_name
+        description: "TODO"
+        data_tests: [not_null]
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: email
+        description: "TODO"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+        tags: ['pii']
+        meta: {classification: confidential}
+      - name: country_code
+        description: "TODO"
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+        tags: ['pii']
+        meta: {classification: confidential}
