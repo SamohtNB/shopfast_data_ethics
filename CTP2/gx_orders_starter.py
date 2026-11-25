@@ -21,13 +21,30 @@ for e in [
     E.ExpectTableRowCountToBeBetween(min_value=1000, max_value=100000),
     E.ExpectColumnValuesToNotBeNull(column="order_id"),
     E.ExpectColumnValuesToBeUnique(column="order_id"),
+
     # TODO 1: customer_id must not be null
+    E.ExpectColumnValuesToNotBeNull(column="customer_id"),
+
     # TODO 2: customer_id must exist in customers (hint: ExpectColumnValuesToBeInSet with set(customers["customer_id"]))
+    E.ExpectColumnValuesToBeInSet(column="customer_id", value_set=set(customers["customer_id"])),
+
     # TODO 3: order_date must not be null and must look like YYYY-MM-DD (ExpectColumnValuesToMatchRegex)
+    E.ExpectColumnValuesToNotBeNull(column="order_date"),
+    E.ExpectColumnValuesToMatchRegex(column="order_date", regex=r"\d{4}-\d{2}-\d{2}"),
+
     # TODO 4: no order in the future (ExpectColumnValuesToBeBetween on column "order_date_dt")
+    E.ExpectColumnValuesToBeBetween(column="order_date_dt", max_value=pd.Timestamp.today().normalize()),
+
     # TODO 5: status only in: pending, shipped, delivered, cancelled, returned
+    E.ExpectColumnValuesToBeInSet(column="status", value_set={"pending", "shipped", "delivered", "cancelled", "returned"}),
+
     # TODO 6: channel and shipping_country only in their allowed values (look at the data first!)
+    E.ExpectColumnValuesToBeInSet(column="channel", value_set={"web", "mobile_app", "marketplace"}),
+    E.ExpectColumnValuesToBeInSet(column="shipping_country", value_set={"FR", "DE", "BE", "ES"}),
+
     # TODO 7: total_amount_eur strictly positive and below a sensible maximum
+    E.ExpectColumnValuesToBeBetween(column="total_amount_eur", min_value=0, max_value=10000, strict_min=True),
+
 ]:
     suite.add_expectation(e)
 suite.save()

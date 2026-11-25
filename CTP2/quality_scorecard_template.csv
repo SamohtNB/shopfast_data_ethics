@@ -9,4 +9,12 @@ Validity,French postal code has five digits,postal_code,invalid postal codes amo
 Consistency,country uses the canonical uppercase ISO alpha-2 code,country,non-empty values outside FR DE BE ES from the listed country counts,274,1099,75.07,medium,Customer data steward (to assign)
 Consistency,signup_date uses YYYY-MM-DD format,signup_date,wrong-format rows after email deduplication,284,1134,74.96,medium,Customer data steward (to assign)
 Accuracy,birth_date is not before 1906 or in the future,birth_date,invalid birth dates after email deduplication,10,1134,99.12,medium,Customer data steward (to assign)
-Timeliness,,,,,,,,
+Uniqueness,order_id is unique,order_id,duplicate rows reported by GX expect_column_values_to_be_unique,14,5207,99.73,high,Orders data steward (to assign)
+Consistency,customer_id exists in the customers dataset,customer_id,GX expect_column_values_to_be_in_set against customer IDs,14,5207,99.73,high,Orders data steward (to assign)
+Completeness,order_date is filled,order_date,GX expect_column_values_to_not_be_null,11,5207,99.79,medium,Orders data steward (to assign)
+Consistency,order_date uses YYYY-MM-DD format,order_date,GX expect_column_values_to_match_regex,0,5207,100.00,low,Orders data steward (to assign)
+Accuracy,order_date is not in the future,order_date_dt,GX expect_column_values_to_be_between with today's date as maximum,5,5207,99.90,medium,Orders data steward (to assign)
+Validity,status is pending shipped delivered cancelled or returned,status,GX expect_column_values_to_be_in_set,9,5207,99.83,medium,Orders data steward (to assign)
+Validity,channel is web mobile_app or marketplace,channel,GX expect_column_values_to_be_in_set,0,5207,100.00,low,Orders data steward (to assign)
+Validity,shipping_country is FR DE BE or ES,shipping_country,GX expect_column_values_to_be_in_set,0,5207,100.00,low,Orders data steward (to assign)
+Validity,total_amount_eur is greater than 0 and at most 10000,total_amount_eur,GX expect_column_values_to_be_between with strict minimum 0 and maximum 10000,6,5207,99.88,medium,Orders data steward (to assign)
