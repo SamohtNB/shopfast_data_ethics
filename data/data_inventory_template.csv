@@ -1,0 +1,8 @@
+dataset,file_or_table,description_one_sentence,business_domain,data_owner,data_steward,data_custodian,contains_personal_data_Y_N,sensitivity_level,refresh_frequency,row_count,issues_spotted
+customers,data/customers.csv | raw.customers,,,,,,,,,,
+products,data/products.csv | raw.products,,,,,,,,,,
+orders,data/orders.csv | raw.orders,,,,,,,,,,
+order_items,data/order_items.csv | raw.order_items,,,,,,,,,,
+payments,data/payments.csv | raw.payments,"Contains informations about each payment",,,,,Y,5/5,daily,4902,"1953 without card attached and 696 rows without captured transaction"
+support_tickets,data/support_tickets.csv | raw.support_tickets,,,,,,,,,422,
+marketing_campaign_export,data/marketing_campaign_export.csv | raw.marketing_campaign_export,,,,,,,,,600,""
